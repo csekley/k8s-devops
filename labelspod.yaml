@@ -32,7 +32,7 @@ spec:
             operator: In
             values:
               - redis
-        topologyKey: topology.kubernetes.io/zone
+      topologyKey: topology.kubernetes.io/zone
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
@@ -41,4 +41,4 @@ spec:
             operator: In
             values:
               - spring-music
-          topologyKey: topology.kubernetes.io/zone
+      topologyKey: topology.kubernetes.io/zone
