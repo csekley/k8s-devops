@@ -7,15 +7,15 @@ spec:
   - name: app1
     image: supergiantkir/animals:bear
     volumeMounts:
-    - name: mydir
+    - name: app-storage
       mountPath: /app/data
   - name: app2
     image: yanivomc/spring-music:latest
     volumeMounts:
-    - name: mydir
+    - name: app-storage
       mountPath: /app/data
   volumes:
-  - name: mydir
+  - name: app-storage
     hostPath:
       # Ensure the file directory is created.
       path: /tmp/files
