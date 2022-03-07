@@ -31,7 +31,7 @@ spec:
           - key: cache
             operator: In
             values:
-              - redis
+            - redis
         topologyKey: topology.kubernetes.io/zone
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -40,5 +40,5 @@ spec:
           - key: app
             operator: In
             values:
-              - spring-music
+            - spring-music
         topologyKey: topology.kubernetes.io/zone
