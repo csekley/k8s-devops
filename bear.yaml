@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cuda-test
+  name: bear
   labels:
     app: ui
     tier: frontend
@@ -90,4 +90,68 @@ spec:
   containers:
   - name: redis
     image: redis:latest
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moose
+  labels:
+    app: ui
+    tier: frontend
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 0
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: cuda-test
+        image: "supergiantkir/animals:moose"
+    #  affinity:
+    #    nodeAffinity:
+    #      requiredDuringSchedulingIgnoredDuringExecution:
+    #        nodeSelectorTerms:
+    #        - matchExpressions:
+    #          - key: topology.kubernetes.io/zone
+    #            operator: In
+    #            values:
+    #            - eu-west-1b
+    #            - eu-west-1c
+    #      preferredDuringSchedulingIgnoredDuringExecution:
+    #      - weight: 1
+    #        preference:
+    #          matchExpressions:
+    #          - key: node.kubernetes.io/instance-type
+    #            operator: In
+    #            values:
+    #            - t3.large
+    #    podAffinity:
+    #      requiredDuringSchedulingIgnoredDuringExecution:
+    #      - labelSelector:
+    #          matchExpressions:
+    #          - key: cache
+    #            operator: In
+    #            values:
+    #            - redis
+    #        topologyKey: topology.kubernetes.io/zone
+    #    podAntiAffinity:
+    #      requiredDuringSchedulingIgnoredDuringExecution:
+    #      - labelSelector:
+    #            matchExpressions:
+    #            - key: app
+    #              operator: In
+    #              values:
+    #              - spring-music
+    #        topologyKey: topology.kubernetes.io/zone
 
