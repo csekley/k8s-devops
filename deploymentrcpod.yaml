@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: cuda-test
-        image: nginx:latest
+        image: "nginx:latest"
     #  affinity:
     #    nodeAffinity:
     #      requiredDuringSchedulingIgnoredDuringExecution:
