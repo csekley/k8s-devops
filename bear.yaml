@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: bear
   labels:
-    app: ui
+    tier: frontend
 spec:
   strategy:
     type: RollingUpdate
@@ -97,7 +97,7 @@ kind: Deployment
 metadata:
   name: moose
   labels:
-    app: ui
+    tier: frontend
 spec:
   strategy:
     type: RollingUpdate
