@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: bear
   labels:
+    app: my-app
     tier: frontend
 spec:
   strategy:
@@ -13,11 +14,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      tier: frontend
+      app: my-app
   template:
     metadata:
       labels:
-        tier: frontend
+        app: my-app
     spec:
       containers:
       - name: cuda-test
@@ -98,6 +99,7 @@ metadata:
   name: moose
   labels:
     tier: frontend
+    app: my-app
 spec:
   strategy:
     type: RollingUpdate
@@ -107,11 +109,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      tier: frontend
+      app: my-app
   template:
     metadata:
       labels:
-        tier: frontend
+        app: my-app
     spec:
       containers:
       - name: cuda-test
