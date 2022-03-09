@@ -4,7 +4,6 @@ metadata:
   name: bear
   labels:
     app: ui
-    tier: frontend
 spec:
   strategy:
     type: RollingUpdate
@@ -99,7 +98,6 @@ metadata:
   name: moose
   labels:
     app: ui
-    tier: frontend
 spec:
   strategy:
     type: RollingUpdate
