@@ -24,9 +24,7 @@ spec:
           service:
              name: bear-svc
              port:
-                number: 80      
-    http:
-      paths:        
+                number: 80        
       - path: /moose(/|$)(.*)
         pathType: Prefix
         backend:
