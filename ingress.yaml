@@ -15,7 +15,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: csekley-34.249.238.41.nip.io
+  - host: 34.249.238.41.nip.io
     http:
       paths:
       - path: /bear(/|$)(.*)
