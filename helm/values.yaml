@@ -1,0 +1,14 @@
+databaseprod: 
+  dbname: db_mysql
+  dbtable: music
+  dburl: "my-db-url.com:1234"
+databasetest: 
+  dbname: db_mysql-test
+  dbtable: music
+pods: 
+  image: yanivomc/spring-music
+  tag: latest
+  replica: 2
+food:
+  drink: beer
+  eat: "Peanut Butter and Jelly sandwich"
