@@ -4,7 +4,7 @@ metadata:
   name: wordpress-secrets
 type: Opaque
 data:
-  db-password: somedbpw
+  db-password: c29tZWRicHc=
 
 ---
 
