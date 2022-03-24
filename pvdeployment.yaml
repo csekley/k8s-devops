@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-music
+  labels:
+    app: ui
+    tier: frontend
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 0
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: spring-music
+        image: "yanivomc/spring-music:latest"
+        volumeMounts:
+        - mountPath: "/var/www/html"
+          name: pod-volume-html
+      volumes:
+      - name: pod-volume-html
+        persistentVolumeClaim:
+          claimName: jb-claim
