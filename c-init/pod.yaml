@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+  labels:
+    app: myapp
+spec:
+  containers:
+  - name: jb-app
+    image: nginx:latest
+    command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+    volumeMounts:
+    - mountPath: /usr/share/nginx/html
+      name: app-storage
+    env:
+      - name: GIT_ENV
+      valueFrom:
+        configMapKeyRef:
+          name: c-init-configmap
+          key: source
+  initContainers:
+  - name: init-step1 # INIT 1 
+    image: alpine/git:latest
+    command: [ “git”, “clone”, “$GIT_ENV” >>>> /cdn ]
+    volumeMounts:
+    - mountPath: /cdn
+      name: app-storage
+  - name: init-step2
+    image: alpine/git:latest
+    command: ['sh', '-c', 'echo This is INIT STEP 2! && sleep 5']
+  volumes:
+  - name: app-storage
+    emptyDir: {}
