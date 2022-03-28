@@ -13,7 +13,7 @@ spec:
     - mountPath: /usr/share/nginx/html
       name: app-storage
     env:
-      - name: GIT_ENV
+      name: GIT_ENV
       valueFrom:
         configMapKeyRef:
           name: c-init-configmap
